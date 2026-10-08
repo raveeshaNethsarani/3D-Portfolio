@@ -1,16 +1,8 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
+import { SITE } from "@/data/site";
 import { goTo } from "@/lib/scroll";
-
-type NavLink = { label: string; id: string };
-
-const BRAND = "Alex Rivera";
-const NAV_LINKS: readonly NavLink[] = [
-  { label: "Work", id: "projects" },
-  { label: "About", id: "about" },
-  { label: "Contact", id: "contact" },
-];
 
 const FOCUS_RING = "rounded-sm focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ink-900";
 
@@ -30,11 +22,11 @@ export default function Navbar() {
         className="container flex items-center justify-between px-gutter py-6 sm:px-gutter-md lg:px-gutter-lg"
       >
         <a href="#home" className={`text-body-l font-bold ${FOCUS_RING}`}>
-          {BRAND}
+          {SITE.name}
           <span className="text-neon-pink">.</span>
         </a>
         <ul className="flex items-center gap-6 text-meta font-medium sm:gap-10">
-          {NAV_LINKS.map(({ label, id }) => (
+          {SITE.navLinks.map(({ label, id }) => (
             <li key={id}>
               <a
                 href={`#${id}`}

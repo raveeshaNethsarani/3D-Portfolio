@@ -14,6 +14,7 @@ const SPRING = 0.035; // pull back towards the home position
 const DAMPING = 0.86; // velocity kept per 60fps frame
 const HEAT_DIST = 24; // displacement (px) at which a dot is fully pink
 const BUCKETS = 6; // colour steps, so each frame needs only a few fills
+const MAX_PIXELS = 8_000_000; // backing-store cap so tall sections don't allocate huge canvases
 
 const lerp = (a: number, b: number, t: number) => a + (b - a) * t;
 
@@ -53,7 +54,7 @@ export default function ParticleField({ className = "" }: { className?: string }
     const build = () => {
       w = host.clientWidth;
       h = host.clientHeight;
-      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      const dpr = Math.min(window.devicePixelRatio || 1, 2, Math.sqrt(MAX_PIXELS / Math.max(1, w * h)));
       canvas.width = Math.round(w * dpr);
       canvas.height = Math.round(h * dpr);
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);

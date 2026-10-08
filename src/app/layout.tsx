@@ -2,6 +2,7 @@ import { existsSync } from "node:fs";
 import { join } from "node:path";
 import type { Metadata } from "next";
 import { Space_Grotesk } from "next/font/google";
+import { SITE } from "@/data/site";
 import "./globals.css";
 
 const spaceGrotesk = Space_Grotesk({
@@ -10,9 +11,7 @@ const spaceGrotesk = Space_Grotesk({
   weight: ["400", "500", "600", "700"],
 });
 
-const title = "Alex Rivera — Full-Stack Developer";
-const description =
-  "I design and build interactive, scalable web experiences where technology meets creativity.";
+const { title, description } = SITE;
 
 // Only advertise the OG image once public/hero.png has been added.
 const hasHeroImage = existsSync(join(process.cwd(), "public", "hero.png"));
@@ -27,7 +26,7 @@ export const metadata: Metadata = {
     title,
     description,
     url: "/",
-    siteName: "Alex Rivera",
+    siteName: SITE.name,
     locale: "en_US",
     type: "website",
     images: hasHeroImage ? [{ url: "/hero.png", alt: title }] : undefined,
