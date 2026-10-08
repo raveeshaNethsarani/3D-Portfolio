@@ -12,6 +12,8 @@
 
 html {
   scroll-behavior: smooth;
+  /* Keeps section tops clear of the fixed navbar when jumping to an anchor. */
+  scroll-padding-top: 5rem;
 }
 
 @media (prefers-reduced-motion: reduce) {
