@@ -4,20 +4,8 @@ import { useCallback, useRef, useState } from "react";
 import dynamic from "next/dynamic";
 import { motion, useReducedMotion, useScroll, useTransform, type Variants } from "framer-motion";
 import { useElementHeight, useMediaQuery, useOnScreen, usePointer } from "@/components/hero/hooks";
+import { HERO } from "@/data/hero";
 import { goTo } from "@/lib/scroll";
-
-type HeadlineLine = { text: string; accent?: boolean };
-
-const HEADLINE: readonly HeadlineLine[] = [
-  { text: "Turning" },
-  { text: "Ideas Into" },
-  { text: "Digital Worlds", accent: true },
-];
-const INTRO = "I design and build interactive, scalable web experiences where technology meets creativity.";
-const ROLE = "Full-Stack Developer · Software Engineer";
-const CTA_LABEL = "Explore My Work";
-const IMAGE_ALT =
-  "Side profile of a woman wearing a VR headset, with neon-pink network lines flowing through her hair";
 
 const HeroCanvas = dynamic(() => import("@/components/hero/HeroCanvas"), { ssr: false });
 
@@ -64,7 +52,7 @@ export default function Hero({ imageSrc = "/hero.png", depthSrc = "/hero-depth.p
       {/* 3D layer: fills the hero and sits behind the text */}
       <div
         role="img"
-        aria-label={IMAGE_ALT}
+        aria-label={HERO.imageAlt}
         className={`pointer-events-none absolute inset-0 z-0 transition-opacity duration-700 ${
           ready ? "opacity-100" : "opacity-0"
         }`}
@@ -99,7 +87,7 @@ export default function Hero({ imageSrc = "/hero.png", depthSrc = "/hero-depth.p
             variants={lines}
             className="text-[length:clamp(2.25rem,9.6vw,3.5rem)] font-bold uppercase leading-[calc(74/76)] tracking-[-0.02em] lg:text-[length:clamp(2.75rem,4.6vw,4.75rem)]"
           >
-            {HEADLINE.map(({ text, accent }) => (
+            {HERO.headline.map(({ text, accent }) => (
               <motion.span key={text} variants={rise} className="block whitespace-nowrap">
                 {accent ? (
                   <span className="bg-accent-gradient bg-clip-text pr-[0.06em] text-transparent">{text}</span>
@@ -111,11 +99,11 @@ export default function Hero({ imageSrc = "/hero.png", depthSrc = "/hero-depth.p
           </motion.h1>
 
           <motion.p variants={rise} className="mt-6 max-w-[480px] text-body text-ink-600 sm:text-body-l">
-            {INTRO}
+            {HERO.intro}
           </motion.p>
 
           <motion.p variants={rise} className="mt-7 text-label uppercase text-ink-600">
-            {ROLE}
+            {HERO.role}
           </motion.p>
 
           {/* The wrapper animates in; the link keeps its own hover transform. */}
@@ -125,7 +113,7 @@ export default function Hero({ imageSrc = "/hero.png", depthSrc = "/hero-depth.p
               onClick={goTo(projectsId, !reduced)}
               className="group inline-flex items-center gap-3 rounded-pill bg-neon-pink px-7 py-3.5 text-body font-semibold text-ink-900 shadow-[0_10px_30px_-12px_rgba(255,46,154,0.7)] transition duration-300 ease-out hover:-translate-y-1 hover:shadow-[0_0_0_6px_rgba(255,46,154,0.14),0_18px_48px_-10px_rgba(255,46,154,0.9)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ink-900 motion-reduce:transition-none motion-reduce:hover:translate-y-0"
             >
-              {CTA_LABEL}
+              {HERO.ctaLabel}
               <svg
                 viewBox="0 0 20 20"
                 fill="none"
@@ -157,7 +145,7 @@ export default function Hero({ imageSrc = "/hero.png", depthSrc = "/hero-depth.p
           transition={{ duration: 0.8, delay: 1.4 }}
           className={`flex flex-col items-center gap-3 ${FOCUS_RING}`}
         >
-          <span className="text-label uppercase text-ink-600">Scroll</span>
+          <span className="text-label uppercase text-ink-600">{HERO.scrollLabel}</span>
           <span className="relative block h-10 w-px overflow-hidden bg-line">
             <motion.span
               className="absolute left-0 top-0 block h-4 w-px bg-neon-pink"
