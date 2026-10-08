@@ -14,8 +14,9 @@ export const SITE: SiteContent = {
   title: "Alex Rivera — Full-Stack Developer",
   description: "I design and build interactive, scalable web experiences where technology meets creativity.",
   navLinks: [
-    { label: "Work", id: "projects" },
-    { label: "About", id: "about" },
+    { label: "About Me", id: "about" },
+    { label: "Experience", id: "experience" },
+    { label: "Projects", id: "projects" },
     { label: "Contact", id: "contact" },
   ],
 };
