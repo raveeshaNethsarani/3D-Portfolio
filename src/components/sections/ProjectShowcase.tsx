@@ -1,6 +1,6 @@
 "use client";
 
-import { ExternalLink,  } from "lucide-react";
+import { ExternalLink } from "lucide-react";
 import { Card, Carousel, type Card as CarouselCard } from "@/components/ui/apple-cards-carousel";
 import type { Project } from "@/data/projects";
 
@@ -47,7 +47,7 @@ function ProjectDetails({ project }: { project: Project }) {
             rel="noreferrer"
             className="inline-flex items-center gap-2 rounded-full border border-line bg-white/50 px-5 py-3 text-sm font-semibold text-ink-900 transition-colors hover:bg-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink-900"
           >
-            GitHub <Github aria-hidden className="h-4 w-4" />
+            GitHub <ExternalLink aria-hidden className="h-4 w-4" />
           </a>
         )}
         {project.liveUrl === "#" && project.repoUrl === "#" && (
