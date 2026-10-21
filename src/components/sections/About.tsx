@@ -26,9 +26,9 @@ export default function About() {
           <p className="text-label uppercase text-neon-pink">{ABOUT.label}</p>
         </Reveal> */}
 
-        <div className="grid grid-cols-1 gap-12 sm:gap-16 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] xl:gap-20">
-          {/* Left: headline, pinned while the biography scrolls */}
-          <div>
+        <div className="grid grid-cols-1 gap-12 sm:gap-16 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] xl:gap-20">
+          {/* Right on desktop (first in the DOM and on mobile): headline, pinned while the biography scrolls */}
+          <div className="lg:col-start-2 lg:row-start-1">
             <div className="lg:sticky lg:top-24">
               <Reveal className="mb-6 flex items-center gap-3 text-label uppercase text-ink-600">
                 <Terminal aria-hidden className="h-3.5 w-3.5 text-neon-pink" />
@@ -55,8 +55,8 @@ export default function About() {
             </div>
           </div>
 
-          {/* Right: biography */}
-          <div className="max-w-[70ch] space-y-6">
+          {/* Left on desktop: biography */}
+          <div className="max-w-[70ch] space-y-6 lg:col-start-1 lg:row-start-1">
             <Reveal delay={0.08} className="flex items-center gap-3 text-label uppercase text-neon-pink">
               <span aria-hidden className="h-px w-8 bg-neon-pink" />
               <span>{ABOUT.profileLabel}</span>

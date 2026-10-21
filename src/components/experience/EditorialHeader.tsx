@@ -27,7 +27,7 @@ export default function EditorialHeader({ eyebrow, title, titleId, overview, pat
       </Reveal>
 
       <Reveal delay={0.13} className="flex flex-col justify-end">
-        <p className="max-w-[70ch] text-body text-ink-600">{overview}</p>
+        <p className="max-w-[70ch] text-body text-ink-600 sm:text-justify">{overview}</p>
         <p className="mt-6 flex flex-wrap items-center gap-2 text-label uppercase text-neon-pink">
           <span aria-hidden className="h-2 w-2 rounded-pill bg-neon-pink motion-safe:animate-pulse" />
           <span>Engineering progression</span>
