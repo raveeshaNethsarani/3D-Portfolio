@@ -1,7 +1,8 @@
 // About section content. Edit the text here; the layout lives in components/sections/About.tsx.
 
-export type TitleStyle = "solid" | "outline" | "accent";
-export type TitleLine = { text: string; style?: TitleStyle };
+import type { TitleLine, TitleStyle } from "./types";
+
+export type { TitleLine, TitleStyle };
 // A paragraph is a list of plain strings and { strong } highlights; accent makes a highlight pink.
 export type Segment = string | { strong: string; accent?: boolean };
 export type Paragraph = { size: "lead" | "body"; segments: readonly Segment[] };
